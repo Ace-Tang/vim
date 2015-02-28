@@ -1,0 +1,42 @@
+set nocompatible
+set number 
+filetype indent on
+filetype plugin indent on
+syntax on
+set autoindent
+set cindent
+set smartindent
+set showmatch
+set tabstop=4
+set shiftwidth=4
+set incsearch
+set mouse=a
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {<CR>}<ESC>kA<CR>
+
+inoremap < <><ESC>i
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+set scrolloff=3
+execute pathogen#infect()
+set backspace=2
+
+colorschem evening
+
+"ctags
+set tags=tags
+set tags+=./tags
+map <F8> :TlistToggle<CR>
+
+"taglist
+let Tlist_Show_One_File=1
+let Tlist_Use_Left_Window=1
+let Tlist_Auto_Open=0
+let Tlist_Exit_OnlyWindow=1
+
+"cscope
+if filereadable("cscope.out")
+	cs add cscope.out
+endif
+
