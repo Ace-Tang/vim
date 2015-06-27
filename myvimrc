@@ -10,6 +10,7 @@ set showmatch
 set tabstop=4
 set shiftwidth=4
 set incsearch
+set hlsearch
 set mouse=a
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
