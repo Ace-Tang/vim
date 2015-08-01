@@ -1,3 +1,4 @@
+"bg=#07242E  fg=#07242E
 set nocompatible
 set number 
 filetype indent on
