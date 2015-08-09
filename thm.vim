@@ -21,9 +21,10 @@ hi Number term=bold ctermfg=Magenta guifg=#ffa0a0 guibg=grey5 cterm=bold
 hi Cursor guibg=Green guifg=Black
 hi Visual term=reverse ctermbg=black guibg=grey60 cterm=reverse
 hi Type cterm=bold ctermfg=180
-hi Constant cterm=bold  ctermfg=1
+hi Constant cterm=bold  ctermfg=12
 hi Identifier cterm=bold  ctermfg=48
 hi Function  cterm=bold ctermfg=170
-hi Operator cterm=bold	ctermfg=1
+hi Operator cterm=bold	ctermfg=12
 hi Directory term=bold ctermfg=LightCyan guifg=Cyan cterm=bold
 hi Include cterm=bold ctermfg=167
+hi Character cterm=bold ctermfg=130
