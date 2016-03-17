@@ -23,7 +23,7 @@ inoremap ' ''<ESC>i
 set scrolloff=3
 execute pathogen#infect()
 set backspace=2
-colorschem evening
+colorschem thm
 
 "ctags
 set tags=tags

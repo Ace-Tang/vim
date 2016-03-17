@@ -28,3 +28,4 @@ hi Operator cterm=bold	ctermfg=12
 hi Directory term=bold ctermfg=LightCyan guifg=Cyan cterm=bold
 hi Include cterm=bold ctermfg=167
 hi Character cterm=bold ctermfg=130
+hi Special term=bold ctermfg=LightRed guifg=Orange guibg=grey5
