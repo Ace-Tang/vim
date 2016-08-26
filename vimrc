@@ -124,6 +124,11 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 	\ }
 
+" => vim-multiple-cursors
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 
 "colorschem ,Statement=if , String,  Comment, Number, Constant, Identifier
 "=var, Function, Operator , last few was useful in shell
