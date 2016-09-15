@@ -13,6 +13,13 @@ set shiftwidth=4
 set incsearch
 set mouse=a
 set hlsearch
+set history=50
+set scrolloff=3
+execute pathogen#infect()
+set backspace=2
+colorschem thm
+
+"map ->
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap { {<CR>}<ESC>kA<CR>
@@ -20,10 +27,22 @@ inoremap { {<CR>}<ESC>kA<CR>
 inoremap < <><ESC>i
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
-set scrolloff=3
-execute pathogen#infect()
-set backspace=2
-colorschem thm
+
+nnoremap ff gg=G
+nmap tt :%s/\t/    /g<CR>
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+map <F10> :set paste<CR>
+map <F12> :set nopaste<CR>
+" show time
+noremap <F5> "=strftime("%F %R")<CR>gP
+
+nnoremap <F6> :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣<CR>:set list<CR>
+nnoremap <F7> :set nolist<CR>
 
 "ctags
 set tags=tags
