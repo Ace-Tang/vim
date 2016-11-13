@@ -38,6 +38,7 @@ inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 
 nnoremap ff gg=G
+nnoremap <C-B> :CtrlPBuffer>
 nmap tt :%s/\t/    /g<CR>
 
 map <C-j> <C-W>j
@@ -157,6 +158,17 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" => ctrlp-vim quick search file opened early
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 "colorschem ,Statement=if , String,  Comment, Number, Constant, Identifier
 "=var, Function, Operator , last few was useful in shell
