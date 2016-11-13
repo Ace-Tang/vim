@@ -20,6 +20,14 @@ execute pathogen#infect()
 set backspace=2
 colorschem thm
 
+" vimgrep use:
+":vim/love/*             当前文件夹下的所有文件  
+":vim/love/**            当前文件夹及子目录下的所有文件
+":cw         查看搜索结果  
+":ccl        关闭搜索结果  
+":cn         查找下一个  
+":cp         查找上一个
+
 "map ->
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
