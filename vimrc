@@ -11,7 +11,9 @@ set showmatch
 set tabstop=4
 set shiftwidth=4
 set incsearch
-set mouse=a
+if has('mouse')
+  set mouse=a
+endif
 " make copy and paste available -> set mouse=r
 set hlsearch
 set history=50
