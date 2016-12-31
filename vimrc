@@ -40,7 +40,7 @@ inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 
 nnoremap ff gg=G
-nnoremap <C-B> :CtrlPBuffer>
+nnoremap <C-B> :CtrlPBuffer
 nmap tt :%s/\t/    /g<CR>
 
 map <C-j> <C-W>j
@@ -171,6 +171,13 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+" => list file tree
+" t open file in new tab
+" i open file in split
+" s open file in Vsplit
+map <C-x> :NERDTreeToggle<CR>
+
 
 "colorschem ,Statement=if , String,  Comment, Number, Constant, Identifier
 "=var, Function, Operator , last few was useful in shell
