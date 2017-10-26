@@ -1,6 +1,7 @@
 "bg=#07242E  fg=#07242E
 set nocompatible
 set number 
+" set nu! | set nonu to close number
 filetype indent on
 filetype plugin indent on
 syntax on
@@ -21,6 +22,15 @@ set scrolloff=3
 execute pathogen#infect()
 set backspace=2
 colorschem thm
+
+" 显示/关闭80行的分割
+"set colorcolumn=80 显示80列分割
+"set colorcolumn=   关闭分割
+
+" 打开/关闭拼写检查
+" set spell
+" set nospell
+
 
 " vimgrep use:
 ":vim/love/*             当前文件夹下的所有文件  
@@ -182,3 +192,6 @@ map <C-x> :NERDTreeToggle<CR>
 "colorschem ,Statement=if , String,  Comment, Number, Constant, Identifier
 "=var, Function, Operator , last few was useful in shell
 
+
+" exec command in vim
+" %!python -m json.tool
