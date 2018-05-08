@@ -182,6 +182,16 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+
+" => vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
+
+" => vim rust
+" need install github.com/rust-lang/rustfmt
+let g:rustfmt_autosave = 1
+
+
 " => list file tree
 " t open file in new tab
 " i open file in split

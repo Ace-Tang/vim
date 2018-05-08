@@ -16,6 +16,6 @@ if [  -e $color ];then
 fi
 
 sudo cp vimrc $rc_dir
-sudo cp -r vim $vim_dir
+sudo cp -r vim/* $vim_dir
 sudo cp thm.vim $color
 sudo cp gobin/* /usr/local/bin/
