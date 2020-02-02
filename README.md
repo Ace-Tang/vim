@@ -3,6 +3,16 @@
 1. change config in init.share
 2. bash init.sh
 
+## 安装 YouCompleteMe
+
+vim --version (需要支持python，output中要看到 +python3或 +python2)
+
+1. git clone https://github.com/ycm-core/YouCompleteMe.git
+2. 下载依赖git submodule update --init --recursive
+3. 系统依赖 sudo apt install build-essential cmake python3-dev
+4. 安装补全
+> rust: python3 install.py --rust-completer
+> 安装所有语言以来 python3 install.py --all
 
 ## go plugin repo
 
