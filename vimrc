@@ -43,7 +43,9 @@ colorschem thm
 "map ->
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
-inoremap { {<CR>}<ESC>kA<CR>
+inoremap { {}<ESC>i
+"" 关掉{} 的自动换行
+""inoremap { {<CR>}<ESC>kA<CR>
 
 inoremap < <><ESC>i
 inoremap " ""<ESC>i
@@ -130,6 +132,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+""let g:go_fmt_command = "gofmt"
 let g:go_fmt_command = "goimports"
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 
@@ -189,8 +192,23 @@ let g:vim_markdown_folding_disabled = 1
 
 " => vim rust
 " need install github.com/rust-lang/rustfmt
-let g:rustfmt_autosave = 1
+""let g:rustfmt_autosave = 1
+set hidden
+let g:racer_cmd = "/home/ace/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+let $RUST_SRC_PATH="/home/ace/github/rust-lang/rust/src"
 
+"" map for rust racer
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gv <Plug>(rust-def-vertical)
+au FileType rust nmap gt <Plug>(rust-def-tab)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+
+map GD :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " => list file tree
 " t open file in new tab

@@ -15,3 +15,7 @@ gU$        ：从光标所在位置到行尾，都变为大写
 2. 文件 json 格式化
 
 %!python -m json
+
+3. ops
+
+Ctrl + r 回退操作
