@@ -200,6 +200,7 @@ let g:racer_insert_paren = 1
 let $RUST_SRC_PATH="/home/ace/github/rust-lang/rust/src"
 
 "" map for rust racer
+" cargo install racer
 
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
