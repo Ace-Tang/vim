@@ -5,6 +5,8 @@
 
 ## 安装 YouCompleteMe
 
+rust 用ycm补全有问题,用racer就可以了
+
 vim --version (需要支持python，output中要看到 +python3或 +python2)
 
 1. git clone https://github.com/ycm-core/YouCompleteMe.git ~/.vim/bundle
@@ -12,6 +14,8 @@ vim --version (需要支持python，output中要看到 +python3或 +python2)
 3. 系统依赖 sudo apt install build-essential cmake python3-dev
 4. 安装补全
 > rust: python3 install.py --rust-completer
+> golang: python3 install.py --go-completer
+> c: python3 install.py --clang-completer
 > 安装所有语言以来 python3 install.py --all
 
 ## go plugin repo

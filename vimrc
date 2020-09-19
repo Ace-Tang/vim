@@ -125,6 +125,14 @@ set t_Co=256
 " Javascript  need npm install jshint
 let g:syntastic_javascript_checkers = ['jshint']
 
+" go jump guru, godef 
+" go get golang.org/x/tools/cmd/guru
+" go get github.com/golang/lint
+" go get -u github.com/kisielk/errcheck
+" go get -u github.com/jstemmer/gotags
+" go get golang.org/x/tools/cmd/goimports
+" go get golang.org/x/lint/golint
+" go get golang.org/x/tools/gopls  补全代码
 "go config
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -191,13 +199,14 @@ let g:vim_markdown_folding_disabled = 1
 
 
 " => vim rust
+" rust only use racer to complete and jump
 " need install github.com/rust-lang/rustfmt
 ""let g:rustfmt_autosave = 1
 set hidden
 let g:racer_cmd = "/home/ace/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
-let $RUST_SRC_PATH="/home/ace/github/rust-lang/rust/src"
+let $RUST_SRC_PATH="/home/ace/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
 
 "" map for rust racer
 " cargo install racer
@@ -208,8 +217,6 @@ au FileType rust nmap gv <Plug>(rust-def-vertical)
 au FileType rust nmap gt <Plug>(rust-def-tab)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
-
-map GD :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " => list file tree
 " t open file in new tab
