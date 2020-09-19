@@ -132,14 +132,27 @@ let g:syntastic_javascript_checkers = ['jshint']
 " go get -u github.com/jstemmer/gotags
 " go get golang.org/x/tools/cmd/goimports
 " go get golang.org/x/lint/golint
-" go get golang.org/x/tools/gopls  补全代码
+" go get golang.org/x/tools/gopls , 需要设置gopls路径
+" let g:ycm_gopls_binary_path = path
 "go config
+
+
+"=====================vim 74 with old vim-go plugin ======================"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+"====================vim 80 with new vim-go plugin======================="
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_function_parameters = 1
 ""let g:go_fmt_command = "gofmt"
 let g:go_fmt_command = "goimports"
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']

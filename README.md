@@ -3,6 +3,11 @@
 1. change config in init.share
 2. bash init.sh
 
+## golang 补全,代码高亮
+
+vim-go: git clone https://github.com/fatih/vim-go.git
+高亮等配置从doc/vim-go.txt 抄到 vimrc中, 不同版本配置不一样
+
 ## 安装 YouCompleteMe
 
 rust 用ycm补全有问题,用racer就可以了
