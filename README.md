@@ -11,6 +11,7 @@ vim-go: git clone https://github.com/fatih/vim-go.git
 ## 安装 YouCompleteMe
 
 rust 用ycm补全有问题,用racer就可以了
+golang 的ycm支持下载gopls
 
 vim --version (需要支持python，output中要看到 +python3或 +python2)
 
