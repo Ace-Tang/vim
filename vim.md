@@ -36,9 +36,63 @@ x + Ctrl + d: 删除包括当前字符之后的所有字符
 yy: 复制当前行
 p: 复制
 u: 取消当前操作
+ctrl + R 撤销取消操作
+
+对多行一起操作
+1)ctrl + v + up/down -> 选择操作行数
+2)shift + i -> 开始单行操作
+2) esc -> 其他区域也按照类似操作执行
 
 4. 命令行模式使用
 
 :vs 垂直分屏
 :sp 水平分屏
 :w 保存当前输入
+:set paste 复制数据到vim里时去除vim多余操作,如换行补空格等
+:(ctrl+r) + (ctrl+w) 复制当前光标在word
+
+# 代码补全
+
+## golang 补全,代码高亮
+
+vim-go: git clone https://github.com/fatih/vim-go.git
+高亮等配置从doc/vim-go.txt 抄到 vimrc中, 不同版本配置不一样
+
+jump to def: ctrl + ] , jump back ctrl + t
+
+一些有用的二进制
+
+1. goimports 自动导入依赖包  `go get golang.org/x/tools/cmd/goimports`
+2. govendor  包管理 `go get github.com/kardianos/govendor`
+3. guru      词法分析和跳转等  `go get golang.org/x/tools/cmd/guru`
+4. godef 跳转
+
+## 安装 YouCompleteMe
+
+rust 用ycm补全有问题,用racer就可以了, jump to def: gd/ctrl + i, jump back: ctrl + o
+golang 的ycm支持下载gopls
+
+vim --version (需要支持python，output中要看到 +python3或 +python2)
+
+1. git clone https://github.com/ycm-core/YouCompleteMe.git ~/.vim/bundle
+2. 下载依赖git submodule update --init --recursive
+3. 系统依赖 sudo apt install build-essential cmake python3-dev
+4. 安装补全
+> rust: python3 install.py --rust-completer
+> golang: python3 install.py --go-completer
+> c: python3 install.py --clang-completer
+> Python: python3 install.py
+> 安装所有语言以来 python3 install.py --all
+
+## python代码补全
+
+ycm的python代码补全不是很好用
+
+https://github.com/davidhalter/jedi-vim.git
+
+pip install jedi
+
+通过vimrc的配置决定跳转的关键字
+
+## go plugin repo
+

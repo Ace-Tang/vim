@@ -157,6 +157,20 @@ let g:go_highlight_function_parameters = 1
 let g:go_fmt_command = "goimports"
 let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 
+" python
+" jump to def: ctrl + i, jump back: ctrl + t
+let g:jedi#goto_command = "<C-i>"
+" auto complete, default is enable
+let g:jedi#completions_enabled = 1
+"let g:jedi#goto_assignments_command = "<leader>g"
+"let g:jedi#goto_stubs_command = "<leader>s"
+"let g:jedi#goto_definitions_command = ""
+"let g:jedi#documentation_command = "K"
+"let g:jedi#usages_command = "<leader>n"
+"let g:jedi#completions_command = "<C-Space>"
+"let g:jedi#rename_command = "<leader>r"
+
+
 "node config
 
 
