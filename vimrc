@@ -23,6 +23,8 @@ execute pathogen#infect()
 set backspace=2
 colorschem thm
 
+let mapleader=","
+
 " 显示/关闭80行的分割
 "set colorcolumn=80 显示80列分割
 "set colorcolumn=   关闭分割
@@ -170,6 +172,8 @@ let g:jedi#completions_enabled = 1
 "let g:jedi#completions_command = "<C-Space>"
 "let g:jedi#rename_command = "<leader>r"
 
+" support python 3.x syntax
+let g:syntastic_python_checkers=['python3.5']
 
 "node config
 
@@ -230,6 +234,7 @@ let g:vim_markdown_folding_disabled = 1
 " need install github.com/rust-lang/rustfmt
 ""let g:rustfmt_autosave = 1
 set hidden
+" use to jump to define
 let g:racer_cmd = "/home/ace/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
@@ -245,11 +250,26 @@ au FileType rust nmap gt <Plug>(rust-def-tab)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 
-" => list file tree
+" nerd => list file tree
 " t open file in new tab
 " i open file in split
 " s open file in Vsplit
-map <C-x> :NERDTreeToggle<CR>
+" 打开nerd时光标落在opened file
+map <C-x> :NERDTreeFind<CR>
+" 打开或关闭nerd
+" leader is ,
+map <Leader>m :NERDTreeToggle<CR>
+
+" 打开文件的同时打开nerd
+"autocmd VimEnter * NERDTree | wincmd p
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" 打开tab时光标落在opened file
+let g:nerdtree_tabs_autofind = 1
+let g:nerdtree_tabs_focus_on_files = 1
+
+
 
 
 "colorschem ,Statement=if , String,  Comment, Number, Constant, Identifier
