@@ -54,7 +54,6 @@ inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 
 nnoremap ff gg=G
-nnoremap <C-B> :CtrlPBuffer
 nmap tt :%s/\t/    /g<CR>
 
 map <C-j> <C-W>j
@@ -62,13 +61,13 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map <F10> :set paste<CR>
-map <F12> :set nopaste<CR>
-" show time
-noremap <F5> "=strftime("%F %R")<CR>gP
+map <Leader>z :set paste<CR>
+map <Leader>x :set nopaste<CR>
+" show time, insert time in vim
+noremap <Leader>a "=strftime("%F %R")<CR>gP
 
-nnoremap <F6> :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣<CR>:set list<CR>
-nnoremap <F7> :set nolist<CR>
+nnoremap <Leader>s :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣<CR>:set list<CR>
+nnoremap <Leader>d :set nolist<CR>
 
 "ctags
 set tags=tags
@@ -140,14 +139,15 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 
 "=====================vim 74 with old vim-go plugin ======================"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_structs = 1
+"let g:go_highlight_interfaces = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
 
 "====================vim 80 with new vim-go plugin======================="
+
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
@@ -173,49 +173,17 @@ let g:jedi#completions_enabled = 1
 "let g:jedi#rename_command = "<leader>r"
 
 " support python 3.x syntax
-let g:syntastic_python_checkers=['python3.5']
-
-"node config
-
-
-"tarbar: used for go
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-	\ }
+let g:syntastic_python_checkers=['python3.6']
 
 " => vim-multiple-cursors
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+""let g:multi_cursor_next_key='<C-n>'
+""let g:multi_cursor_prev_key='<C-p>'
+""let g:multi_cursor_skip_key='<C-x>'
+""let g:multi_cursor_quit_key='<Esc>'
 
-" => ctrlp-vim quick search file opened early
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" => ctrlp-vim quick search file opened early, 模糊匹配查找文件
+let g:ctrlp_map = ''
+let g:ctrlp_cmd = ''
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'find %s -type f'
 let g:ctrlp_custom_ignore = {
@@ -224,6 +192,50 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+nnoremap <C-B> :CtrlPBuffer<CR>
+nnoremap <C-P> :CtrlP
+
+" => 模糊匹配与查找工具 Leaderf, 有2种模式, normal模式和insert模式
+" insert模式中, ctrl + j向下选择, ctrl + k向上选择, <C-]> 垂直分屏打开文件, <C-X> 水平分屏打开文件
+" normal模式中, 无法使用leaderf定义的快捷键
+
+let g:Lf_HideHelp = 1
+
+" ====== 查找word在哪些文件出现
+
+" grep on the fly
+noremap <Leader>r :Leaderf rg<CR>
+" search word under cursor, the pattern is treated as regex, and enter normal mode directly
+" -e 正则表达式搜索, rg -e xxx file/directory 加上的话可以指定文件或目录搜索
+noremap <Leader>e :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+"  完整匹配搜索word
+noremap <Leader>w :<C-U><C-R>=printf("Leaderf! rg -w %s ", expand("<cword>"))<CR>
+" 打开选定文件后, Leaderf搜索结果页面不退出
+noremap <Leader>t :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", expand("<cword>"))<CR>
+" recall last search. If the result window is closed, reopen it.
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+" ==== rg 的一些例子
+" search visually selected text literally, don't quit LeaderF after accepting an entry
+"xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+" search word under cursor, the pattern is treated as regex,
+" append the result to previous search results.
+" noremap <leader>g :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
+" search word under cursor literally only in current buffer
+" noremap <leader>b :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+" search word under cursor literally in all listed buffers
+" noremap <leader>d :<C-U><C-R>=printf("Leaderf! rg -F --all-buffers -e %s ", expand("<cword>"))<CR>
+" search word under cursor in *.h and *.cpp files.
+" noremap <Leader>a :<C-U><C-R>=printf("Leaderf! rg -e %s -g *.h -g *.cpp", expand("<cword>"))<CR>
+" the same as above
+" noremap <Leader>a :<C-U><C-R>=printf("Leaderf! rg -e %s -g *.{h,cpp}", expand("<cword>"))<CR>
+" search word under cursor in cpp and java files.
+" noremap <Leader>b :<C-U><C-R>=printf("Leaderf! rg -e %s -t cpp -t java", expand("<cword>"))<CR>
+" search word under cursor in cpp files, exclude the *.hpp files
+" noremap <Leader>c :<C-U><C-R>=printf("Leaderf! rg -e %s -t cpp -g !*.hpp", expand("<cword>"))<CR>
+
+" ======= 查找文件, 与ctrlp 类似
+noremap <Leader>f :Leaderf file<CR>
 
 " => vim-markdown
 let g:vim_markdown_folding_disabled = 1
@@ -240,7 +252,7 @@ let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 let $RUST_SRC_PATH="/home/ace/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
 
-"" map for rust racer
+" map for rust racer
 " cargo install racer
 
 au FileType rust nmap gd <Plug>(rust-def)
@@ -255,6 +267,7 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " i open file in split
 " s open file in Vsplit
 " 打开nerd时光标落在opened file
+" s 垂直分屏打开文件, i 水平分屏打开文件, 回车 打开在当前文件
 map <C-x> :NERDTreeFind<CR>
 " 打开或关闭nerd
 " leader is ,

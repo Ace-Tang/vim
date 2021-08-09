@@ -95,7 +95,7 @@ jump to def: ctrl + ] , jump back ctrl + t
 3. guru      词法分析和跳转等  `go get golang.org/x/tools/cmd/guru`
 4. godef 跳转
 
-## 安装 YouCompleteMe
+## 安装 YouCompleteMe(YCM)
 
 rust 用ycm补全有问题,用racer就可以了, jump to def: gd/ctrl + i, jump back: ctrl + o
 golang 的ycm支持下载gopls
@@ -112,9 +112,16 @@ vim --version (需要支持python，output中要看到 +python3或 +python2)
 > Python: python3 install.py
 > 安装所有语言以来 python3 install.py --all
 
+## c 代码补全
+
+安装包: apt-get install llvm-3.9 clang-3.9 libclang-3.9-dev libboost-all-dev
+
+执行 ./install.py --clang-completer 报错
+1. Cannot find path to libclang in prebuilt binaries
+
 ## python代码补全
 
-ycm的python代码补全不是很好用
+ycm的python代码补全不是很好用, 使用jedi
 
 https://github.com/davidhalter/jedi-vim.git
 
@@ -124,8 +131,28 @@ pip install jedi
 
 ## go plugin repo
 
+go get golang.org/x/tools/cmd/guru, 跳转
+go get github.com/golang/lint
+go get -u github.com/kisielk/errcheck, 
+go get -u github.com/jstemmer/gotags, 无用
+go get golang.org/x/tools/cmd/goimports, golang自动导入包
+go get golang.org/x/lint/golint, golang 格式化工具
+go get golang.org/x/tools/gopls , ycm golang补全的工具, 需要设置gopls路径
+
 ## cheat.sh-vim
 
 一个强大的备忘录数据库, 可以查到go/python/js各种语言,基于各种linux工具的使用,这个插件可以结合vim使用
+
+# vim 内部搜索
+
+单词搜索/文件搜索
+
+https://github.com/BurntSushi/ripgrep  cargo install ripgrep
+
+rg(ripgrep) 是命令行工具, 配合vim插件(https://github.com/Yggdroot/LeaderF)使用作单词搜索, leaderf本身是做文件搜索的
+
+
+https://github.com/ctrlpvim/ctrlp.vim 只能做文件搜索
+
 
 
