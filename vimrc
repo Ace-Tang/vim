@@ -23,6 +23,7 @@ execute pathogen#infect()
 set backspace=2
 colorschem thm
 
+"设置leader键是,
 let mapleader=","
 
 " 显示/关闭80行的分割
@@ -64,18 +65,23 @@ map <C-l> <C-W>l
 map <Leader>z :set paste<CR>
 map <Leader>x :set nopaste<CR>
 " show time, insert time in vim
-noremap <Leader>a "=strftime("%F %R")<CR>gP
+"noremap <Leader>a "=strftime("%F %R")<CR>gP
 
 nnoremap <Leader>s :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣<CR>:set list<CR>
 nnoremap <Leader>d :set nolist<CR>
 
 "ctags
+filetype on
 set tags=tags
 set tags+=./tags
 map <F8> :TlistToggle<CR>
 "set autochdir
 
 "taglist
+" 打开tag
+noremap <Leader>w :Tlist<CR>
+" 关闭tag
+noremap <Leader>q :TlistClose<CR>
 let Tlist_Show_One_File=1
 let Tlist_Use_Left_Window=1
 let Tlist_Auto_Open=0
@@ -135,7 +141,14 @@ let g:syntastic_javascript_checkers = ['jshint']
 " go get golang.org/x/lint/golint
 " go get golang.org/x/tools/gopls , 需要设置gopls路径
 " let g:ycm_gopls_binary_path = path
-"go config
+let g:ycm_global_ycm_extra_conf = '/home/ace/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+" 打开vim时不再询问是否加载ycm_extra_conf.py配置
+let g:ycm_confirm_extra_conf=0
+noremap jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" => c config
+
+" => go config
 
 
 "=====================vim 74 with old vim-go plugin ======================"
@@ -207,14 +220,23 @@ let g:Lf_HideHelp = 1
 noremap <Leader>r :Leaderf rg<CR>
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 " -e 正则表达式搜索, rg -e xxx file/directory 加上的话可以指定文件或目录搜索
-noremap <Leader>e :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+noremap le :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 "  完整匹配搜索word
-noremap <Leader>w :<C-U><C-R>=printf("Leaderf! rg -w %s ", expand("<cword>"))<CR>
+noremap lw :<C-U><C-R>=printf("Leaderf! rg -w %s ", expand("<cword>"))<CR>
 " 打开选定文件后, Leaderf搜索结果页面不退出
-noremap <Leader>t :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", expand("<cword>"))<CR>
+noremap ls :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", expand("<cword>"))<CR>
+" 只匹配选定的类型文件, 比如 go/c/java等, -g 后面要加正则匹配文件
+noremap lt :<C-U><C-R>=printf("Leaderf! rg  -e %s -t ", expand("<cword>"))<CR>
+noremap lg :<C-U><C-R>=printf("Leaderf! rg  -e %s -g *.", expand("<cword>"))<CR>
 " recall last search. If the result window is closed, reopen it.
 noremap go :<C-U>Leaderf! rg --recall<CR>
 
+" ==== rg使用
+"1. rg -e 正则匹配
+"2. rg -w 完全匹配
+"3. rg -t c/java -e xx 指定搜索文件类型
+"4. rg -g "*.{md,html}" mysql 指定某一类文件中搜索
+"
 " ==== rg 的一些例子
 " search visually selected text literally, don't quit LeaderF after accepting an entry
 "xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
